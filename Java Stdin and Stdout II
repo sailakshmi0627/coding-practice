@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Read input in the given order
+        int num = sc.nextInt();       // 42
+        double dbl = sc.nextDouble(); // 3.1415
+        sc.nextLine();                // consume the leftover newline
+        String str = sc.nextLine();   // "Welcome to HackerRank's Java tutorials!"
+
+        // Print in the required format
+        System.out.println("String: " + str);
+        System.out.println("Double: " + dbl);
+        System.out.println("Int: " + num);
+
+        sc.close();
+    }
+}
