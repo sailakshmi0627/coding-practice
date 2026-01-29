@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int T;
+    cin >> T;
+    while (T--) {
+        int N, K;
+        cin >> N >> K;
+
+        vector<int> A(N);
+        for (int i = 0; i < N; i++) cin >> A[i];
+
+        vector<int> motu, tomu;
+        long long motu_sum = 0, tomu_sum = 0;
+
+        for (int i = 0; i < N; i++) {
+            if (i % 2 == 0) {
+                motu.push_back(A[i]);
+                motu_sum += A[i];
+            } else {
+                tomu.push_back(A[i]);
+                tomu_sum += A[i];
+            }
+        }
+
+        sort(motu.rbegin(), motu.rend()); // biggest first
+        sort(tomu.begin(), tomu.end());   // smallest first
+
+        int swaps = min(K, min((int)motu.size(), (int)tomu.size()));
+        for (int i = 0; i < swaps; i++) {
+            if (motu[i] > tomu[i]) {
+                motu_sum -= motu[i];
+                tomu_sum += motu[i];
+                motu_sum += tomu[i];
+                tomu_sum -= tomu[i];
+            } else break;
+        }
+
+        if (tomu_sum > motu_sum) cout << "YES\n";
+        else cout << "NO\n";
+    }
+    return 0;
+}
