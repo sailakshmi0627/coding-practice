@@ -1,0 +1,17 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+n = int(input())
+words = []
+count = {}
+
+for _ in range(n):
+    word = input().strip()
+    if word in count:
+        count[word] += 1
+    else:
+        count[word] = 1
+
+# Number of distinct words
+print(len(count))
+
+# Occurrences in order of appearance
+print(*count.values())
